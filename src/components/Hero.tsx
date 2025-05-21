@@ -10,8 +10,8 @@ const Hero = () => {
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-portfolio-light-purple/10 blur-3xl animate-pulse-slow" />
       
       <div className="relative z-10 max-w-3xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-        <div className="w-32 h-32 rounded-full mx-auto mb-8 bg-gradient-to-br from-portfolio-purple to-portfolio-light-purple p-1">
-          <div className="w-full h-full rounded-full bg-white dark:bg-portfolio-charcoal flex items-center justify-center text-3xl font-bold text-portfolio-purple">
+        <div className="w-32 h-32 rounded-full mx-auto mb-8 bg-gradient-to-br from-portfolio-purple to-portfolio-dark-purple p-1">
+          <div className="w-full h-full rounded-full bg-black dark:bg-portfolio-charcoal flex items-center justify-center text-3xl font-bold text-portfolio-purple">
             NP
           </div>
         </div>
@@ -21,7 +21,7 @@ const Hero = () => {
         </h1>
         
         <h2 className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-6">
-          Full Stack Developer & AI Specialist
+          Automation Engineer & AI Specialist
         </h2>
         
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">

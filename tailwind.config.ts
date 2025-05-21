@@ -116,11 +116,19 @@ export default {
 				},
 				floating: {
 					'0%, 100%': {
-						transform: 'translateY(0)',
+						transform: 'translateY(0) rotate3d(1, 1, 1, 0deg)',
 					},
 					'50%': {
-						transform: 'translateY(-10px)',
+						transform: 'translateY(-10px) rotate3d(1, 1, 1, 10deg)',
 					},
+				},
+				'rotate-3d': {
+					'0%': {
+						transform: 'rotate3d(1, 1, 1, 0deg)'
+					},
+					'100%': {
+						transform: 'rotate3d(1, 1, 1, 360deg)'
+					}
 				}
 			},
 			animation: {
@@ -129,6 +137,19 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out forwards',
 				'pulse-slow': 'pulse-slow 3s infinite',
 				'floating': 'floating 6s ease-in-out infinite',
+				'rotate-3d': 'rotate-3d 8s linear infinite'
+			},
+			extend: {
+				perspective: {
+					'1000': '1000px',
+					'2000': '2000px',
+				},
+				transformStyle: {
+					'3d': 'preserve-3d',
+				},
+				transitionTimingFunction: {
+					'expo-out': 'cubic-bezier(0.16, 1, 0.3, 1)',
+				},
 			}
 		}
 	},
