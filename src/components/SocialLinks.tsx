@@ -14,17 +14,17 @@ const SocialLinks = () => {
           <SocialButton 
             icon={<Github className="h-6 w-6" />} 
             label="GitHub" 
-            href="https://github.com/johnportfolio" 
+            href="https://github.com/namanportfolio" 
           />
           <SocialButton 
             icon={<Linkedin className="h-6 w-6" />} 
             label="LinkedIn" 
-            href="https://linkedin.com/in/johnportfolio" 
+            href="https://linkedin.com/in/namanportfolio" 
           />
           <SocialButton 
             icon={<Instagram className="h-6 w-6" />} 
             label="Instagram" 
-            href="https://instagram.com/johnportfolio" 
+            href="https://instagram.com/namanportfolio" 
           />
           <SocialButton 
             icon={<Phone className="h-6 w-6" />} 

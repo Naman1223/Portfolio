@@ -12,12 +12,12 @@ const Hero = () => {
       <div className="relative z-10 max-w-3xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
         <div className="w-32 h-32 rounded-full mx-auto mb-8 bg-gradient-to-br from-portfolio-purple to-portfolio-light-purple p-1">
           <div className="w-full h-full rounded-full bg-white dark:bg-portfolio-charcoal flex items-center justify-center text-3xl font-bold text-portfolio-purple">
-            JP
+            NP
           </div>
         </div>
         
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          <span className="gradient-text">John Portfolio</span>
+          <span className="gradient-text">Naman Portfolio</span>
         </h1>
         
         <h2 className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-6">
