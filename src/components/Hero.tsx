@@ -21,12 +21,12 @@ const Hero = () => {
         </h1>
         
         <h2 className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-6">
-          Full Stack Developer & AI Specialist
+          Automation Engineer & AI Specialist
         </h2>
         
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          I create elegant solutions to complex problems using modern technologies.
-          Specialized in React, Node.js and AI integration.
+          I create efficient automation solutions for complex processes using modern technologies.
+          Specialized in RPA, workflow optimization, and AI integration.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
