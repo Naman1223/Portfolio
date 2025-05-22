@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,14 +12,14 @@ type Message = {
 
 // Sample responses based on common HR questions
 const AI_RESPONSES: Record<string, string> = {
-  default: "Hello! I'm John's AI assistant. I can tell you about John's experience, skills, or help you schedule an interview. What would you like to know?",
-  skills: "John is proficient in React, Node.js, TypeScript, Python, and has experience with AI/ML integration. His strongest technical skills are in full-stack development and cloud architecture.",
-  experience: "John has 5 years of professional experience, including 3 years at TechCorp as a Senior Developer and 2 years at AI Solutions as a Full Stack Engineer.",
-  education: "John holds a Bachelor's degree in Computer Science from Tech University, graduating with honors in 2018.",
-  projects: "Some of John's notable projects include an AI-powered customer service platform, an e-commerce solution with 99.9% uptime, and a machine learning model for predictive analytics.",
-  strengths: "John's key strengths include problem-solving, communication skills, and the ability to quickly adapt to new technologies.",
-  interview: "Great! John is available for interviews next week. Would you like me to schedule one for you? Just let me know which day works best.",
-  contact: "You can reach John directly at john@portfolio.com or 123-456-7890.",
+  default: "Hello! I'm Naman's AI assistant. I can tell you about Naman's experience, skills, or help you schedule an interview. What would you like to know?",
+  skills: "Naman is proficient in React, Node.js, TypeScript, Python, and has experience with AI/ML integration. His strongest technical skills are in full-stack development and cloud architecture.",
+  experience: "Naman has 5 years of professional experience, including 3 years at TechCorp as a Senior Developer and 2 years at AI Solutions as a Full Stack Engineer.",
+  education: "Naman holds a Bachelor's degree in Computer Science from Tech University, graduating with honors in 2018.",
+  projects: "Some of Naman's notable projects include an AI-powered customer service platform, an e-commerce solution with 99.9% uptime, and a machine learning model for predictive analytics.",
+  strengths: "Naman's key strengths include problem-solving, communication skills, and the ability to quickly adapt to new technologies.",
+  interview: "Great! Naman is available for interviews next week. Would you like me to schedule one for you? Just let me know which day works best.",
+  contact: "You can reach Naman directly at naman@portfolio.com or 123-456-7890.",
 };
 
 const AIChat = () => {
@@ -79,7 +78,7 @@ const AIChat = () => {
         responseContent = AI_RESPONSES.interview;
         toast({
           title: "Interview Request Detected",
-          description: "Your interview request has been noted. John will contact you shortly!",
+          description: "Your interview request has been noted. Naman will contact you shortly!",
           duration: 5000,
         });
       } else if (lowerInput.includes("contact") || lowerInput.includes("email") || lowerInput.includes("phone")) {
