@@ -1,4 +1,5 @@
 
+
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -131,7 +132,7 @@ const AIChat = () => {
     <section id="chat-section" className="py-16 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-3xl font-bold gradient-text">Chat With DataStax Astra</h2>
+          <h2 className="text-3xl font-bold gradient-text">Chat With Me</h2>
           <Button
             variant="outline"
             size="sm"
@@ -250,3 +251,4 @@ const AIChat = () => {
 };
 
 export default AIChat;
+
