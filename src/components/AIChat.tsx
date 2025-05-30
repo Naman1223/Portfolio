@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,8 +32,8 @@ const AIChat = () => {
     const saved = localStorage.getItem('astra-config');
     return saved ? JSON.parse(saved) : {
       webhookUrl: "https://astra.datastax.com/api/v1/webhook/903fcb39-a23f-4862-8863-8dc89a34a92f",
-      apiKey: "wkGCHToZYpWpUt38Lb,qJ1ma.j6PmFabjSgI9XEe2RDTzs4yoxQ8y4m-LO4",
-      authToken: "AstraCS:IDDFIgCkAhrXWmjsGiXmuWNr:c033c30c7432535a02192346167a53d7d7105afdef2dfaa61dc5788411451820"
+      apiKey: "astracs:pDLbwvxDpmuXqBQEjXczgFoP:40f6fe10bdc892d8a165c10c3bda",
+      authToken: "TwipFtCWWA7ucWxSjyCgSIy4k68X5,lqwnsGUFyzW1QaSB-F49RSZq6BB"
     };
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -67,9 +66,7 @@ const AIChat = () => {
           'Authorization': `Bearer ${astraConfig.authToken}`
         },
         body: JSON.stringify({
-          message: userMessage,
-          timestamp: new Date().toISOString(),
-          context: "portfolio_chat"
+          any: "data"
         })
       });
 
