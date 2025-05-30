@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,8 +33,8 @@ const AIChat = () => {
     const saved = localStorage.getItem('astra-config');
     return saved ? JSON.parse(saved) : {
       webhookUrl: "https://astra.datastax.com/api/v1/webhook/903fcb39-a23f-4862-8863-8dc89a34a92f",
-      apiKey: "astracs:pDLbwvxDpmuXqBQEjXczgFoP:40f6fe10bdc892d8a165c10c3bda",
-      authToken: "TwipFtCWWA7ucWxSjyCgSIy4k68X5,lqwnsGUFyzW1QaSB-F49RSZq6BB"
+      apiKey: "AstraCS:cdlOBRQPXWHBjiEYeWFxeJZk:fe68350286ea6f84cc072d3f361dff22c56a4df8b079ec20458abac383242e94",
+      authToken: "astracs:sCWfkiEObZEDkQsqIuDzOLua:203f03d823d306c95465d45e2e935e119838f0b878db616f92ee19f8040d33de"
     };
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
