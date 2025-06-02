@@ -34,7 +34,7 @@ const AIChat = () => {
 
   const sendToDataStax = async (userMessage: string) => {
     try {
-      const response = await fetch("https://astra.datastax.com/api/v1/webhook/[flow-id]", {
+      const response = await fetch("https://astra.datastax.com/api/v1/webhook/903fcb39-a23f-4862-8863-8dc89a34a92f", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
