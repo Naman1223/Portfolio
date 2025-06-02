@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,23 +11,11 @@ type Message = {
   timestamp: Date;
 };
 
-// Sample responses based on common HR questions
-const AI_RESPONSES: Record<string, string> = {
-  default: "Hello! I'm Naman's AI assistant. I can tell you about Naman's experience, skills, or help you schedule an interview. What would you like to know?",
-  skills: "Naman is proficient in React, Node.js, TypeScript, Python, and has experience with AI/ML integration. His strongest technical skills are in full-stack development and cloud architecture.",
-  experience: "Naman has 5 years of professional experience, including 3 years at TechCorp as a Senior Developer and 2 years at AI Solutions as a Full Stack Engineer.",
-  education: "Naman holds a Bachelor's degree in Computer Science from Tech University, graduating with honors in 2018.",
-  projects: "Some of Naman's notable projects include an AI-powered customer service platform, an e-commerce solution with 99.9% uptime, and a machine learning model for predictive analytics.",
-  strengths: "Naman's key strengths include problem-solving, communication skills, and the ability to quickly adapt to new technologies.",
-  interview: "Great! Naman is available for interviews next week. Would you like me to schedule one for you? Just let me know which day works best.",
-  contact: "You can reach Naman directly at naman@portfolio.com or 123-456-7890.",
-};
-
 const AIChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: "assistant", 
-      content: AI_RESPONSES.default, 
+      content: "Hello! I'm an AI assistant. I can help answer your questions or have a conversation with you. What would you like to talk about?", 
       timestamp: new Date() 
     }
   ]);
@@ -43,7 +32,33 @@ const AIChat = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSendMessage = () => {
+  const sendToDataStax = async (userMessage: string) => {
+    try {
+      const response = await fetch("https://astra.datastax.com/api/v1/webhook/[flow-id]", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'U1agRmS_JKzLkA32tiQUjyK1xevzw14E1ho7RKfi_7flwEzJJnceuwts'
+        },
+        body: JSON.stringify({ 
+          message: userMessage,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.response || "I received your message but couldn't generate a proper response.";
+    } catch (error) {
+      console.error('Error calling DataStax webhook:', error);
+      throw error;
+    }
+  };
+
+  const handleSendMessage = async () => {
     if (!input.trim()) return;
     
     // Add user message
@@ -54,55 +69,49 @@ const AIChat = () => {
     };
     
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input;
     setInput("");
     setIsTyping(true);
     
-    // Simulate AI thinking and responding
-    setTimeout(() => {
-      const lowerInput = input.toLowerCase();
-      
-      // Simple keyword matching for responses
-      let responseContent = AI_RESPONSES.default;
-      
-      if (lowerInput.includes("skill") || lowerInput.includes("know") || lowerInput.includes("tech")) {
-        responseContent = AI_RESPONSES.skills;
-      } else if (lowerInput.includes("experience") || lowerInput.includes("work")) {
-        responseContent = AI_RESPONSES.experience;
-      } else if (lowerInput.includes("education") || lowerInput.includes("degree") || lowerInput.includes("study")) {
-        responseContent = AI_RESPONSES.education;
-      } else if (lowerInput.includes("project")) {
-        responseContent = AI_RESPONSES.projects;
-      } else if (lowerInput.includes("strength") || lowerInput.includes("weakness")) {
-        responseContent = AI_RESPONSES.strengths;
-      } else if (lowerInput.includes("interview") || lowerInput.includes("hire") || lowerInput.includes("meet")) {
-        responseContent = AI_RESPONSES.interview;
-        toast({
-          title: "Interview Request Detected",
-          description: "Your interview request has been noted. Naman will contact you shortly!",
-          duration: 5000,
-        });
-      } else if (lowerInput.includes("contact") || lowerInput.includes("email") || lowerInput.includes("phone")) {
-        responseContent = AI_RESPONSES.contact;
-      }
+    try {
+      // Call DataStax Astra webhook
+      const aiResponse = await sendToDataStax(currentInput);
       
       const assistantMessage: Message = {
         role: "assistant",
-        content: responseContent,
+        content: aiResponse,
         timestamp: new Date(),
       };
       
       setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      // Fallback response if webhook fails
+      const errorMessage: Message = {
+        role: "assistant",
+        content: "I'm sorry, I'm having trouble connecting right now. Please try again later.",
+        timestamp: new Date(),
+      };
+      
+      setMessages((prev) => [...prev, errorMessage]);
+      
+      toast({
+        title: "Connection Error",
+        description: "Unable to connect to the AI service. Please try again.",
+        variant: "destructive",
+        duration: 3000,
+      });
+    } finally {
       setIsTyping(false);
-    }, 1000);
+    }
   };
 
   return (
     <section id="chat-section" className="py-16 px-4">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-4 gradient-text">Chat With My AI Assistant</h2>
+        <h2 className="text-3xl font-bold text-center mb-4 gradient-text">Chat With Me</h2>
         <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          Have questions about my experience, skills, or want to schedule an interview?
-          My AI assistant can help you get the information you need.
+          Have a conversation with my AI assistant powered by DataStax Astra.
+          Ask questions, discuss topics, or just chat!
         </p>
         
         <Card className="p-1 chat-glow bg-gradient-to-br from-portfolio-purple/30 to-portfolio-light-purple/30">
@@ -152,12 +161,14 @@ const AIChat = () => {
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about my skills, experience, or schedule an interview..."
+                  placeholder="Type your message here..."
                   className="flex-grow"
+                  disabled={isTyping}
                 />
                 <Button 
                   type="submit" 
                   className="bg-portfolio-purple hover:bg-portfolio-dark-purple"
+                  disabled={isTyping || !input.trim()}
                 >
                   Send
                 </Button>
