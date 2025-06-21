@@ -32,13 +32,12 @@ const AIChat = () => {
     scrollToBottom();
   }, [messages]);
 
-  const sendToDataStax = async (userMessage: string) => {
+  const sendToWebhook = async (userMessage: string) => {
     try {
-      const response = await fetch("https://astra.datastax.com/api/v1/webhook/903fcb39-a23f-4862-8863-8dc89a34a92f", {
+      const response = await fetch("https://n8nt.sbs/webhook-test/3dbb40de-c7b5-4bd0-bacd-24de7dd641cf", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': 'U1agRmS_JKzLkA32tiQUjyK1xevzw14E1ho7RKfi_7flwEzJJnceuwts'
         },
         body: JSON.stringify({ 
           message: userMessage,
@@ -51,9 +50,9 @@ const AIChat = () => {
       }
 
       const data = await response.json();
-      return data.response || "I received your message but couldn't generate a proper response.";
+      return data.response || data.message || "I received your message but couldn't generate a proper response.";
     } catch (error) {
-      console.error('Error calling DataStax webhook:', error);
+      console.error('Error calling webhook:', error);
       throw error;
     }
   };
@@ -74,8 +73,8 @@ const AIChat = () => {
     setIsTyping(true);
     
     try {
-      // Call DataStax Astra webhook
-      const aiResponse = await sendToDataStax(currentInput);
+      // Call webhook
+      const aiResponse = await sendToWebhook(currentInput);
       
       const assistantMessage: Message = {
         role: "assistant",
