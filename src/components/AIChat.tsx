@@ -34,7 +34,7 @@ const AIChat = () => {
 
   const sendToWebhook = async (userMessage: string) => {
     try {
-      const response = await fetch("https://n8nt.sbs/webhook-test/488a5429-e7da-4d76-b0e9-e8b8e05e9565", {
+      const response = await fetch("https://n8nt.sbs/webhook/488a5429-e7da-4d76-b0e9-e8b8e05e9565?sessionId=xyz123", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
