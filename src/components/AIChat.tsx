@@ -14,7 +14,7 @@ const AIChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: "assistant", 
-      content: "Hello! I'm an AI assistant. I can help answer your questions or have a conversation with you. What would you like to talk about?", 
+      content: "Hello! I'm Naman's AI assistant. I can help answer questions about his experience, skills, and projects. What would you like to know?", 
       timestamp: new Date() 
     }
   ]);
@@ -147,10 +147,9 @@ const AIChat = () => {
   return (
     <section id="chat-section" className="py-16 px-4">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-4 gradient-text">Chat With Me</h2>
+        <h2 className="text-3xl font-bold text-center mb-4 gradient-text">Chat With My AI Assistant</h2>
         <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          Have a conversation with my AI assistant powered by DataStax Astra.
-          Ask questions, discuss topics, or just chat!
+          Have a conversation with my AI assistant. Ask questions about my experience, skills, projects, or anything else you'd like to know!
         </p>
         
         <Card className="p-1 chat-glow bg-gradient-to-br from-portfolio-purple/30 to-portfolio-light-purple/30">

@@ -1,9 +1,8 @@
-
-# Portfolio Project
+# Naman Portfolio
 
 ## About
 
-This is a personal portfolio website showcasing my work as an Automation Engineer & AI Specialist. The site features an interactive AI assistant powered by DataStax Astra that can answer questions about my experience, skills, and projects.
+This is a personal portfolio website showcasing my work as an Automation Engineer & AI Specialist. The site features an interactive AI assistant that can answer questions about my experience, skills, and projects.
 
 ## Features
 
@@ -12,6 +11,7 @@ This is a personal portfolio website showcasing my work as an Automation Enginee
 - Responsive design
 - Social media links
 - Modern UI with Tailwind CSS
+- Meeting scheduler
 
 ## Project info
 
@@ -31,7 +31,7 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-- DataStax Astra (AI Backend)
+- AI Integration
 
 ## Local Development
 
@@ -42,10 +42,10 @@ If you want to run this project locally:
 git clone <YOUR_GIT_URL>
 
 # Step 2: Navigate to the project directory
-cd <YOUR_PROJECT_NAME>
+cd naman-portfolio
 
 # Step 3: Install the necessary dependencies
-npm i
+npm install
 
 # Step 4: Start the development server
 npm run dev
