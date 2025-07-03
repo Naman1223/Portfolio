@@ -37,7 +37,7 @@ const SocialLinks = () => {
           <SocialButton 
             icon={<Phone className="h-6 w-6" />} 
             label="Call Me" 
-            href="tel:+1234567890" 
+            href="tel:+916306166139" 
           />
           <ScheduleDialog />
         </div>
