@@ -27,7 +27,7 @@ const SocialLinks = () => {
           <SocialButton 
             icon={<Linkedin className="h-6 w-6" />} 
             label="LinkedIn" 
-            href="https://linkedin.com/in/namanportfolio" 
+            href="https://www.linkedin.com/in/namantiwari13/" 
           />
           <SocialButton 
             icon={<Instagram className="h-6 w-6" />} 
