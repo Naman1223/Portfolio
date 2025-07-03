@@ -79,10 +79,18 @@ const AIChat = () => {
         throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
       }
 
-      const data = await response.json();
-      console.log('Response data:', data);
+      // Try to get response as text first, then parse if it's JSON
+      const responseText = await response.text();
+      console.log('Response text:', responseText);
       
-      return data.response || data.message || data.reply || "I received your message but couldn't generate a proper response.";
+      // Try to parse as JSON, if it fails, return the text directly
+      try {
+        const data = JSON.parse(responseText);
+        return data.response || data.message || data.reply || responseText;
+      } catch (jsonError) {
+        // If it's not JSON, return the text response directly
+        return responseText || "I received your message but couldn't generate a proper response.";
+      }
     } catch (error) {
       console.error('Error calling webhook:', error);
       throw new Error('Unable to connect to the AI service. Please check your network connection and try again.');
