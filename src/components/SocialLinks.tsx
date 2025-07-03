@@ -32,7 +32,7 @@ const SocialLinks = () => {
           <SocialButton 
             icon={<Instagram className="h-6 w-6" />} 
             label="Instagram" 
-            href="https://instagram.com/namanportfolio" 
+            href="https://www.instagram.com/namantiwari.ii?igsh=MWJidHBuODQzNHk3Yg%3D%3D&utm_source=qr" 
           />
           <SocialButton 
             icon={<Phone className="h-6 w-6" />} 
