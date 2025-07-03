@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Github, Linkedin, Instagram, Phone, Calendar, Clock, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,7 +22,7 @@ const SocialLinks = () => {
           <SocialButton 
             icon={<Github className="h-6 w-6" />} 
             label="GitHub" 
-            href="https://github.com/namanportfolio" 
+            href="https://github.com/Naman1223/Naman1223" 
           />
           <SocialButton 
             icon={<Linkedin className="h-6 w-6" />} 
