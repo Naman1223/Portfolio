@@ -33,25 +33,41 @@ const AIChat = () => {
 
   const sendToWebhook = async (userMessage: string) => {
     try {
+      console.log('Attempting to send message to webhook:', userMessage);
+      
       const response = await fetch("https://n8nt.sbs/webhook/ead66244-8ec8-441b-aa14-5d592490b6b3", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
+        mode: 'cors',
         body: JSON.stringify({ 
           message: userMessage,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          source: 'ai-chat'
         })
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
       }
 
       const data = await response.json();
-      return data.response || data.message || "I received your message but couldn't generate a proper response.";
+      console.log('Response data:', data);
+      
+      return data.response || data.message || data.reply || "I received your message but couldn't generate a proper response.";
     } catch (error) {
       console.error('Error calling webhook:', error);
+      
+      // More specific error handling
+      if (error instanceof TypeError && error.message === 'Load failed') {
+        throw new Error('Network connection failed. Please check if the webhook endpoint is accessible and CORS is properly configured.');
+      }
+      
       throw error;
     }
   };
