@@ -38,7 +38,7 @@ const AIChat = () => {
       // First try with CORS
       let response;
       try {
-        response = await fetch("https://n8nt.sbs/webhook-test/ead66244-8ec8-441b-aa14-5d592490b6b3", {
+        response = await fetch("https://n8nt.sbs/webhook/ead66244-8ec8-441b-aa14-5d592490b6b3", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const AIChat = () => {
         console.log('CORS request failed, trying no-cors mode');
         
         // Fallback to no-cors mode
-        response = await fetch("https://n8nt.sbs/webhook-test/ead66244-8ec8-441b-aa14-5d592490b6b3", {
+        response = await fetch("https://n8nt.sbs/webhook/ead66244-8ec8-441b-aa14-5d592490b6b3", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
