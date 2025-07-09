@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -147,7 +149,22 @@ const AIChat = () => {
                         : "bg-white dark:bg-gray-700 shadow-sm"
                     }`}
                   >
-                    {message.content}
+                    {message.role === "assistant" ? (
+                      <div className="prose prose-sm dark:prose-invert max-w-none
+                        prose-headings:text-gray-900 dark:prose-headings:text-gray-100
+                        prose-p:text-gray-700 dark:prose-p:text-gray-300
+                        prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+                        prose-code:text-portfolio-purple prose-code:bg-gray-100 dark:prose-code:bg-gray-800
+                        prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
+                        prose-blockquote:border-portfolio-purple
+                        prose-a:text-portfolio-purple hover:prose-a:text-portfolio-dark-purple">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {message.content}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      message.content
+                    )}
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
