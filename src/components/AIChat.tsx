@@ -37,7 +37,7 @@ const AIChat = () => {
     try {
       console.log('Attempting to send message to webhook:', userMessage);
       
-      const response = await fetch("https://n8nt.sbs/webhook/dff81b3b-fbb9-4852-82e9-d92c7e0be2ef/chat", {
+      const response = await fetch("https://n8nt.sbs/webhook-test/5d419fc9-32bb-4035-9874-0b74d29f5388", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
