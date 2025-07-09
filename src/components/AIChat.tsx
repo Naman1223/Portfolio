@@ -35,42 +35,18 @@ const AIChat = () => {
     try {
       console.log('Attempting to send message to webhook:', userMessage);
       
-      // First try with CORS
-      let response;
-      try {
-        response = await fetch("https://n8nt.sbs/webhook/dff81b3b-fbb9-4852-82e9-d92c7e0be2ef/chat", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          mode: 'cors',
-          body: JSON.stringify({ 
-            message: userMessage,
-            timestamp: new Date().toISOString(),
-            source: 'ai-chat'
-          })
-        });
-      } catch (corsError) {
-        console.log('CORS request failed, trying no-cors mode');
-        
-        // Fallback to no-cors mode
-        response = await fetch("https://n8nt.sbs/webhook/dff81b3b-fbb9-4852-82e9-d92c7e0be2ef/chat", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          mode: 'no-cors',
-          body: JSON.stringify({ 
-            message: userMessage,
-            timestamp: new Date().toISOString(),
-            source: 'ai-chat'
-          })
-        });
-        
-        // With no-cors, we can't read the response, so return a default message
-        console.log('Request sent with no-cors mode');
-        return "Your message was sent successfully. The AI service should respond shortly.";
-      }
+      const response = await fetch("https://n8nt.sbs/webhook/dff81b3b-fbb9-4852-82e9-d92c7e0be2ef/chat", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'cors',
+        body: JSON.stringify({ 
+          message: userMessage,
+          timestamp: new Date().toISOString(),
+          source: 'ai-chat'
+        })
+      });
 
       console.log('Response status:', response.status);
       console.log('Response ok:', response.ok);
