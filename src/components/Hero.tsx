@@ -8,12 +8,6 @@ const Hero = () => {
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-portfolio-light-purple/10 blur-3xl animate-pulse-slow" />
       
       <div className="relative z-10 max-w-3xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-        <div className="w-32 h-32 rounded-full mx-auto mb-8 bg-gradient-to-br from-portfolio-purple to-portfolio-light-purple p-1">
-          <div className="w-full h-full rounded-full bg-white dark:bg-portfolio-charcoal flex items-center justify-center text-3xl font-bold text-portfolio-purple">
-            NP
-          </div>
-        </div>
-        
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           <span className="gradient-text">Naman Portfolio</span>
         </h1>
