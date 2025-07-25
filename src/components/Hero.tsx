@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Hero = () => {
   return (
@@ -8,6 +9,14 @@ const Hero = () => {
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-portfolio-light-purple/10 blur-3xl animate-pulse-slow" />
       
       <div className="relative z-10 max-w-3xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <div className="mb-6 flex justify-center">
+          <Avatar className="w-24 h-24 border-4 border-portfolio-purple/20 shadow-lg animate-floating">
+            <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-portfolio-purple to-portfolio-dark-purple text-white">
+              NP
+            </AvatarFallback>
+          </Avatar>
+        </div>
+        
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           <span className="gradient-text">Naman Portfolio</span>
         </h1>
